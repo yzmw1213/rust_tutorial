@@ -1,7 +1,12 @@
 use std::any::type_name;
+use std::fmt;
 
 pub fn main() {
-  numeric_literal()
+  numeric_literal();
+  println!("{}",convert_i64_to_str(1000i64));
+
+  let circle = Circle{ radius: 5};
+  println!("{}", circle.to_string())
 }
 
 // 数値型リテラル
@@ -28,3 +33,17 @@ fn get_type<T>(_: T) -> String{
   return a.to_string();
 }
 
+// to_stringを呼び出すよりも、fmt::Displayトレイトを実装する方が好ましい。
+fn convert_i64_to_str(val: i64) -> String {
+  return val.to_string()
+}
+
+struct Circle {
+  radius: i64
+}
+
+impl fmt::Display for Circle {
+  fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+    write!(f, "Circle of radius {}", self.radius)
+  }
+}
