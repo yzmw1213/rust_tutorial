@@ -1,3 +1,6 @@
+// 定数は、定数式しかセットできない。関数の結果や、実行時に評価される値は設定できない
+const MAX_POINTS: u32 = 2147483647; // 32ビットの最大値
+
 pub fn main() {
     let x = 123;
     let y = 40;
@@ -7,7 +10,11 @@ pub fn main() {
     // 変数は、代入した値を変えられないため
     // z = x -y;
 
+    // 変数名の前にmutキーワードを付けることで、可変にできる。
     let mut zz = x + y;
+    println!("{}", zz);
     zz = x - y;
     println!("{}", zz);
+
+    println!("{}", MAX_POINTS)
 }
