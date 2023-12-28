@@ -11,4 +11,4 @@ services:
     volumes:
       - ./:/app
     working_dir: /app/src
-    command: /bin/sh -c "cargo watch -x run"
+    command: /bin/sh -c "cargo watch -c -w src -x run"
